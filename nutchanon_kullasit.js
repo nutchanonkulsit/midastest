@@ -7,6 +7,8 @@ class Data {
 
   push(item) {
     this.data.push(item);
+    //Sort data with energy to make it show minimum energy
+    this.data.sort((a, b) => a.energy - b.energy);
   }
 
   pop() {
@@ -64,6 +66,7 @@ function minEnergy(start, shops, stations, target) {
       for (const dest of stations) {
         if (dest === pos) continue;
 
+        //Check if the station have a shop
         if (shopSet.has(dest)) {
           move.push({
             pos: dest,
